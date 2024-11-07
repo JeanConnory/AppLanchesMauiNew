@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppLanches.Pages.InscricaoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="InscricaoPage"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        Margin="20,150,20,40"
+        RowDefinitions="Auto, Auto, Auto, Auto, *"
+        RowSpacing="20">
+
+        <Image
+            Grid.Row="0"
+            Aspect="AspectFit"
+            HeightRequest="100"
+            Source="lanchesico.png"
+            WidthRequest="100" />
+
+        <Label
+            Grid.Row="1"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Text="Olá! Junte-se a nós" />
+
+        <Frame
+            Grid.Row="2"
+            Padding="15"
+            BackgroundColor="White">
+            <VerticalStackLayout>
+                <Entry x:Name="EntNome" Placeholder="Nome" />
+                <Entry
+                    x:Name="EntEmail"
+                    Keyboard="Email"
+                    Placeholder="Email" />
+                <Entry
+                    x:Name="EntPhone"
+                    Keyboard="Telephone"
+                    Placeholder="Telefone" />
+                <Entry
+                    x:Name="EntPassword"
+                    IsPassword="True"
+                    Placeholder="Password" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Button
+            x:Name="BtnSignup"
+            Grid.Row="3"
+            BackgroundColor="#a90409"
+            Clicked="BtnSignup_Clicked"
+            FontSize="Medium"
+            Text="Faça seu registro" />
+
+        <HorizontalStackLayout
+            Grid.Row="4"
+            HorizontalOptions="Center"
+            Spacing="2"
+            VerticalOptions="EndAndExpand">
+            <Label Text="Já possui uma conta?" />
+            <Label
+                FontAttributes="Bold"
+                Text="Entre aqui"
+                TextColor="#a90409">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapLogin" Tapped="TapLogin_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+
+    </Grid>
+
+</ContentPage>
