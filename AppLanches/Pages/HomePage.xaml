@@ -2,12 +2,140 @@
 <ContentPage
     x:Class="AppLanches.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="HomePage">
-    <VerticalStackLayout>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Grid
+        Margin="15"
+        RowDefinitions="Auto,Auto,Auto,Auto,3*,Auto,4*"
+        RowSpacing="18">
+
+        <VerticalStackLayout Grid.Row="0" Spacing="3">
+            <Label x:Name="LblNomeUsuario" FontSize="Large" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="Subtitle"
+                Text="Tá com fome? Que tal um lanche!"
+                TextColor="#a90409" />
+        </VerticalStackLayout>
+
         <Label
-            HorizontalOptions="Center"
-            Text="Home Page"
+            Grid.Row="1"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="Categorias"
+            TextColor="#a90409" />
+
+        <CollectionView
+            x:Name="CvCategorias"
+            Grid.Row="2"
+            SelectionChanged="CvCategorias_SelectionChanged"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Image
+                            HeightRequest="80"
+                            Source="{Binding CaminhoImagem}"
+                            WidthRequest="80" />
+                        <Label
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="{Binding Nome}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Grid.Row="3"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="Mais Vendidos"
+            TextColor="#a90409"
             VerticalOptions="Center" />
-    </VerticalStackLayout>
+
+        <CollectionView
+            x:Name="CvMaisVendidos"
+            Grid.Row="4"
+            SelectionChanged="CvMaisVendidos_SelectionChanged"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 10,10,10,10">
+                        <Grid>
+                            <Image
+                                Aspect="Fill"
+                                HeightRequest="120"
+                                Source="{Binding CaminhoImagem}"
+                                WidthRequest="120" />
+                            <Label
+                                Padding="5,5"
+                                BackgroundColor="#80000000"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Nome}"
+                                TextColor="White"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Grid.Row="5"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="Mais Populares"
+            TextColor="#a90409"
+            VerticalOptions="Center" />
+
+        <CollectionView
+            x:Name="CvPopulares"
+            Grid.Row="6"
+            SelectionChanged="CvPopulares_SelectionChanged"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Padding="3"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        VerticalOptions="Start">
+                        <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="3">
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="120"
+                                Source="{Binding CaminhoImagem}"
+                                WidthRequest="120" />
+                            <Label
+                                Grid.Row="1"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                MaxLines="2"
+                                Text="{Binding Nome}"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Preco, StringFormat='R$ {0:F2}'}"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
