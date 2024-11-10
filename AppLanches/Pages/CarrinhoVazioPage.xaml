@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppLanches.Pages.CarrinhoVazioPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="CarrinhoVazioPage">
+    <VerticalStackLayout
+        Padding="20"
+        HorizontalOptions="CenterAndExpand"
+        Spacing="20"
+        VerticalOptions="CenterAndExpand">
+
+        <Image
+            Aspect="AspectFit"
+            HeightRequest="300"
+            Source="emptycart.jpg"
+            WidthRequest="300" />
+
+        <Label
+            Margin="0,20,0,0"
+            FontAttributes="Bold"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="Seu carrinho está vazio!"
+            TextColor="DarkBlue"
+            VerticalOptions="CenterAndExpand" />
+
+        <Button
+            x:Name="BtnRetornar"
+            BackgroundColor="DarkBlue"
+            Clicked="BtnRetornar_Clicked"
+            HorizontalOptions="Center"
+            Text="Retornar"
+            VerticalOptions="CenterAndExpand" />
+    </VerticalStackLayout>
+</ContentPage>
