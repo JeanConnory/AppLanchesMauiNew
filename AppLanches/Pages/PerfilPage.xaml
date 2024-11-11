@@ -4,10 +4,81 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="PerfilPage">
-    <VerticalStackLayout>
-        <Label
+
+    <Grid RowDefinitions="Auto,5*,1*" RowSpacing="0">
+        <VerticalStackLayout
+            Grid.Row="0"
+            Padding="20"
+            BackgroundColor="Cyan"
+            Spacing="1"
+            VerticalOptions="Start">
+            <ImageButton
+                x:Name="ImgBtnPerfil"
+                Padding="5"
+                Aspect="AspectFill"
+                Clicked="ImgBtnPerfil_Clicked"
+                CornerRadius="60"
+                HeightRequest="120"
+                Source="user1.png"
+                WidthRequest="120" />
+            <Label
+                x:Name="LblNomeUsuario"
+                HorizontalOptions="Center"
+                TextColor="Black" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Margin="20"
+            Spacing="20">
+            <HorizontalStackLayout Spacing="10">
+                <Image HeightRequest="30" Source="pedidos" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Meus Pedidos" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapPedidos" Tapped="TapPedidos_Tapped" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+
+            <Border BackgroundColor="Gray" HeightRequest="1" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Image HeightRequest="30" Source="perfilconfig" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Minha Conta" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapMinhaConta" Tapped="TapMinhaConta_Tapped" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+
+            <Border BackgroundColor="Gray" HeightRequest="1" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Image HeightRequest="30" Source="perguntas" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Perguntas Frequentes" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapPerguntas" Tapped="TapPerguntas_Tapped" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <ImageButton
+            x:Name="BtnLogout"
+            Grid.Row="2"
+            Padding="5"
+            BackgroundColor="Transparent"
+            Clicked="BtnLogout_Clicked"
+            HeightRequest="60"
             HorizontalOptions="Center"
-            Text="Perfil Page"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+            Source="logout.png"
+            ToolTipProperties.Text="Logout"
+            WidthRequest="60" />
+    </Grid>
 </ContentPage>
