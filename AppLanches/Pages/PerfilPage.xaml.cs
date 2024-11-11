@@ -62,7 +62,7 @@ public partial class PerfilPage : ContentPage
 
     private void TapPerguntas_Tapped(object sender, TappedEventArgs e)
     {
-
+        Navigation.PushAsync(new PerguntasPages());
     }
 
     private void TapPedidos_Tapped(object sender, TappedEventArgs e)
@@ -72,7 +72,8 @@ public partial class PerfilPage : ContentPage
 
     private void BtnLogout_Clicked(object sender, EventArgs e)
     {
-
+        Preferences.Set("accesstoken", string.Empty);
+        Application.Current!.MainPage = new NavigationPage(new LoginPage(_apiService, _validator));
     }
 
     private async void ImgBtnPerfil_Clicked(object sender, EventArgs e)
@@ -135,6 +136,6 @@ public partial class PerfilPage : ContentPage
 
     private void TapMinhaConta_Tapped(object sender, TappedEventArgs e)
     {
-
+        Navigation.PushAsync(new MinhaContaPage(_apiService));
     }
 }
